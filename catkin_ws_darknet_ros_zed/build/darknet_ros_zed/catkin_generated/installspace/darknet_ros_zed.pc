@@ -1,0 +1,8 @@
+prefix=/home/chen/qtProjects/catkin_ws_darknet_ros_zed/install
+
+Name: darknet_ros_zed
+Description: Description of darknet_ros_zed
+Version: 0.1.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime

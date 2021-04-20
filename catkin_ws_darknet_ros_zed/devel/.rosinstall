@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/chen/qtProjects/catkin_ws_darknet_ros_zed/devel/setup.sh

@@ -1,0 +1,65 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/chen/qtProjects/catkin_ws_darknet_ros_zed/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e6a4a/fast && /usr/bin/make  -f CMakeFiles/cmTC_e6a4a.dir/build.make CMakeFiles/cmTC_e6a4a.dir/build
+make[1]: Entering directory '/home/chen/qtProjects/catkin_ws_darknet_ros_zed/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e6a4a.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD -o CMakeFiles/cmTC_e6a4a.dir/src.c.o -c /home/chen/qtProjects/catkin_ws_darknet_ros_zed/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e6a4a
+/opt/cmake-3.18.2-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6a4a.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD -rdynamic CMakeFiles/cmTC_e6a4a.dir/src.c.o -o cmTC_e6a4a 
+CMakeFiles/cmTC_e6a4a.dir/src.c.o：在函数‘main’中：
+src.c:(.text+0x3c)：对‘pthread_create’未定义的引用
+src.c:(.text+0x48)：对‘pthread_detach’未定义的引用
+src.c:(.text+0x54)：对‘pthread_cancel’未定义的引用
+src.c:(.text+0x65)：对‘pthread_join’未定义的引用
+src.c:(.text+0x79)：对‘pthread_atfork’未定义的引用
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_e6a4a.dir/build.make:105: recipe for target 'cmTC_e6a4a' failed
+make[1]: *** [cmTC_e6a4a] Error 1
+make[1]: Leaving directory '/home/chen/qtProjects/catkin_ws_darknet_ros_zed/build/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_e6a4a/fast' failed
+make: *** [cmTC_e6a4a/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/chen/qtProjects/catkin_ws_darknet_ros_zed/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c4fe3/fast && /usr/bin/make  -f CMakeFiles/cmTC_c4fe3.dir/build.make CMakeFiles/cmTC_c4fe3.dir/build
+make[1]: Entering directory '/home/chen/qtProjects/catkin_ws_darknet_ros_zed/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c4fe3.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_c4fe3.dir/CheckFunctionExists.c.o -c /opt/cmake-3.18.2-Linux-x86_64/share/cmake-3.18/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c4fe3
+/opt/cmake-3.18.2-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c4fe3.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_c4fe3.dir/CheckFunctionExists.c.o -o cmTC_c4fe3  -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_c4fe3.dir/build.make:105: recipe for target 'cmTC_c4fe3' failed
+make[1]: *** [cmTC_c4fe3] Error 1
+make[1]: Leaving directory '/home/chen/qtProjects/catkin_ws_darknet_ros_zed/build/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_c4fe3/fast' failed
+make: *** [cmTC_c4fe3/fast] Error 2
+
+
+

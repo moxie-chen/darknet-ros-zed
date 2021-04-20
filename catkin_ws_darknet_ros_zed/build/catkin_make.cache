@@ -1,0 +1,2 @@
+darknet_ros_zed
+-G CodeBlocks - Unix Makefiles -DCMAKE_BUILD_TYPE=Debug -DCATKIN_DEVEL_PREFIX=/home/chen/qtProjects/catkin_ws_darknet_ros_zed/devel -DCMAKE_INSTALL_PREFIX=/home/chen/qtProjects/catkin_ws_darknet_ros_zed/install
